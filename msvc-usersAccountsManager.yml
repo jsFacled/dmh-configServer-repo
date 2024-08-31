@@ -18,7 +18,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
   cloud:
     config:
-      enabled: false
+      enabled: true
 
 server:
   port: 8081
