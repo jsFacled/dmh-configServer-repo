@@ -3,6 +3,11 @@ spring:
     name: msvc-usersAccountsManager
   config:
     import: optional:configserver:http://localhost:8888
+
+  cloud:
+    config:
+      enabled: false # Deshabilito el config server para ir probando
+
   datasource:
     url: jdbc:mysql://localhost:3306/dmh_bd1
     username: root
