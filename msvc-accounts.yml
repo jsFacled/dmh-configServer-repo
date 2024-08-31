@@ -50,4 +50,8 @@ eureka:
   client:
     register-with-eureka: true 
     fetch-registry: true
-    
+
+# Propiedad de prueba
+test:
+  message: "El archivo de configuración msvc-eureka.yml está siendo utilizado correctamente. Desde Github"
+  
