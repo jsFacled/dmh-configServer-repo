@@ -1,13 +1,9 @@
-
 server:
   port: 8083
 
 spring:
   application:
     name: msvc-accounts
-
-  config:
-    import: optional:configserver:http://localhost:8888
 
   datasource:
     url: jdbc:mysql://localhost:3306/dmh_bd1
@@ -23,13 +19,6 @@ spring:
     hibernate:
       ddl-auto: update # Definici�n de datos al iniciar la app
     show-sql: true # Configuraci�n adicional
-
-  cloud:
-    config:
-      enabled: false # Deshabilita el Config Server
-      import-check:
-        enabled: false # Deshabilita la verificación de importación
-
 
 # swagger-ui custom path
 springdoc:
@@ -50,8 +39,13 @@ eureka:
   client:
     register-with-eureka: true 
     fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
 
 # Propiedad de prueba
 test:
-  message: "El archivo de configuración msvc-eureka.yml está siendo utilizado correctamente. Desde Github"
+  message: "El archivo de configuración msvc-accounts.yml está siendo utilizado correctamente. Desde Github"
   
