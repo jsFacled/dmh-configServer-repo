@@ -20,6 +20,15 @@ spring:
       ddl-auto: update # Definici�n de datos al iniciar la app
     show-sql: true # Configuraci�n adicional
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,env"  # Exponer los endpoints de Actuator
+  endpoint:
+    health:
+      show-details: always  # Mostrar detalles completos en /actuator/health
+      
 # swagger-ui custom path
 springdoc:
   swagger-ui:
