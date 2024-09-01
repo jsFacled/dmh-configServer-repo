@@ -37,6 +37,6 @@ springdoc:
 
 # Propiedad de prueba
 test:
-  message: "El archivo de configuración msvc-eureka.yml está siendo utilizado correctamente. Desde Github"
+  message: "El archivo de configuración msvc-cards.yml está siendo utilizado correctamente. Desde Github"
 
 
