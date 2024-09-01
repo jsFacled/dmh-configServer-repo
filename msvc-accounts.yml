@@ -56,5 +56,5 @@ eureka:
 
 # Propiedad de prueba
 test:
-  message: "El archivo de configuración msvc-accounts.yml está siendo utilizado correctamente. Desde Github"
+  message: "--El archivo de configuración msvc-accounts.yml está siendo utilizado correctamente. Desde Github"
   
