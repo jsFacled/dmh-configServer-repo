@@ -23,7 +23,7 @@ spring:
         - id: usersAccountsManager
           uri: lb://MSVC-USERSACCOUNTSMANAGER
           predicates:
-            - Path=/manager/**
+            - Path=/manager/**, /auth/**
 
     config:
       enabled: false
