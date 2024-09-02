@@ -20,10 +20,15 @@ spring:
           uri: lb://MSVC-USERS
           predicates:
             - Path=/users/**
-        - id: usersAccountsManager
+            
+        - id: usersAccountsManager-manager
           uri: lb://MSVC-USERSACCOUNTSMANAGER
           predicates:
-            - Path=/manager/**, /auth/**
+            - Path=/manager/**
+        - id: usersAccountsManager-auth
+          uri: lb://MSVC-USERSACCOUNTSMANAGER
+          predicates:
+            - Path=/auth/**
 
     config:
       enabled: false
