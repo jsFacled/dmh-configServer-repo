@@ -16,6 +16,9 @@ spring:
           uri: lb://MSVC-ACCOUNTS
           predicates:
             - Path=/accounts/**
+          filters:
+            - name: JwtForwardingFilter
+            
         - id: users
           uri: lb://MSVC-USERS
           predicates:
