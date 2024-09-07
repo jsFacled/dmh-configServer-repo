@@ -23,6 +23,8 @@ spring:
           uri: lb://MSVC-USERS
           predicates:
             - Path=/users/**
+          filters:
+            - name: JwtForwardingFilterFactory
             
         - id: usersAccountsManager-manager
           uri: lb://MSVC-USERSACCOUNTSMANAGER
