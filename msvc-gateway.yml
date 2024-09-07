@@ -17,7 +17,7 @@ spring:
           predicates:
             - Path=/accounts/**
           filters:
-            - name: JwtForwardingFilter
+            - name: JwtForwardingFilterFactory
             
         - id: users
           uri: lb://MSVC-USERS
