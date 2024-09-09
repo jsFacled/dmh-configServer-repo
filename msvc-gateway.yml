@@ -23,7 +23,6 @@ spring:
           uri: lb://MSVC-USERS
           predicates:
             - Path=/users/**
-         
             
         - id: usersAccountsManager-manager
           uri: lb://MSVC-USERSACCOUNTSMANAGER
@@ -33,10 +32,32 @@ spring:
           uri: lb://MSVC-USERSACCOUNTSMANAGER
           predicates:
             - Path=/auth/**
+            
+# Configuración de los logs para el gateway
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
 
-    config:
-      enabled: false
+  # Configuración de los logs a nivel DEBUG
+  main:
+    allow-bean-definition-overriding: true
 
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway: DEBUG   # Habilita logs de nivel DEBUG para el gateway
+    org.springframework.web.reactive: DEBUG   # Habilita logs de nivel DEBUG para las solicitudes web reactivas
+    org.springframework.cloud.gateway.filter: DEBUG  # Muestra logs de los filtros
+    org.springframework.cloud.gateway.route: DEBUG   # Muestra logs sobre la definición y enrutamiento
+    org.springframework.http.server.reactive: DEBUG  # Muestra logs relacionados con el servidor HTTP reactivo
+
+    
 # swagger-ui custom path
 springdoc:
   swagger-ui:
