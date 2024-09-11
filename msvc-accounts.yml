@@ -6,9 +6,9 @@ spring:
     name: msvc-accounts
 
   datasource:
-    url: ${MYSQL_URL:jdbc:mysql://localhost:3306/dmh_bd1}
-    username: root
-    password: 123456
+    url: ${MYSQL_URL}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
