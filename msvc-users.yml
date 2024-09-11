@@ -28,6 +28,12 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
+    service-url:
+      defaultZone: http://msvc-eureka:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
+
 # Propiedad de prueba
 test:
   message: "El archivo de configuración msvc-users.yml está siendo utilizado correctamente. Desde Github"
