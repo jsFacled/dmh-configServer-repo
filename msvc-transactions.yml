@@ -36,11 +36,15 @@ springdoc:
   api-docs:
     path: /api-docs
 
-# Deshabilitar la suscripci�n a Eureka
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
+    service-url:
+      defaultZone: http://msvc-eureka:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
 
 
 # Propiedad de prueba
