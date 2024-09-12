@@ -6,9 +6,9 @@ spring:
     name: msvc-accounts
 
   datasource:
-    url: ${MYSQL_URL}
-    username: ${MYSQL_USER}
-    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://host.docker.internal:3306/dmh_bd1
+    username: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
