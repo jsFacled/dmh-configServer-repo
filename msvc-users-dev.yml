@@ -1,40 +1,56 @@
+server:
+  port: 8082
+
 spring:
   application:
     name: msvc-users
 
-  cloud:
-    config:
-      enabled: false # Desabilito el config server para ir probando
-
   datasource:
-    url: ${MYSQL_URL}
-    username: ${MYSQL_USER}
-    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://host.docker.internal:3306/dmh_bd1  # Conectar a MySQL usando host.docker.internal
+    username: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
     properties:
       hibernate:
-        format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update  # Mantiene la base de datos actualizada en desarrollo
+    show-sql: true  # Muestra las consultas SQL en la consola para depuración
 
-server:
-  port: 8082
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,env"  # Exponer los endpoints de Actuator
+  endpoint:
+    health:
+      show-details: always  # Mostrar detalles completos en /actuator/health
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html  # Swagger UI custom path
+  api-docs:
+    path: /api-docs  # Custom path for API docs
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full  # Configura el nivel de logs de Feign para mostrar todas las solicitudes
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
+    register-with-eureka: true  # Registra este microservicio en Eureka
+    fetch-registry: true  # Obtiene el registro de otros servicios de Eureka
     service-url:
-      defaultZone: http://msvc-eureka:8761/eureka/
+      defaultZone: http://msvc-eureka:8761/eureka/  # URL del servidor Eureka
   instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${random.value}
+    prefer-ip-address: true  # Usar la IP preferida
+    instance-id: ${spring.application.name}:${random.value}  # ID único de la instancia
 
 # Propiedad de prueba
 test:
-  message: "El archivo de configuración msvc-users.yml está siendo utilizado correctamente. Desde Github"
-
+  message: "--El archivo de configuración msvc-users.yml está siendo utilizado correctamente. Desde Github"
