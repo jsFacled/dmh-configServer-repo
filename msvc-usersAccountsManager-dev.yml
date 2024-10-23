@@ -1,51 +1,56 @@
-spring:
-  application:
-    name: msvc-usersAccountsManager
-  config:
-    import: optional:configserver:http://localhost:8888
-
-  cloud:
-    config:
-      enabled: false # Deshabilito el config server para ir probando
-
-  datasource:
-    url: ${MYSQL_URL}
-    username: ${MYSQL_USER}
-    password: ${MYSQL_PASSWORD}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQL8Dialect
- 
-
 server:
   port: 8081
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://msvc-eureka:8761/eureka/
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${random.value}
+spring:
+  application:
+    name: msvc-usersAccountsManager
 
+  datasource:
+    url: jdbc:mysql://host.docker.internal:3306/dmh_bd1  # Conectar a MySQL usando host.docker.internal
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update  # Mantiene la base de datos actualizada en desarrollo
+    show-sql: true  # Muestra las consultas SQL en la consola para depuración
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,env"  # Exponer los endpoints de Actuator
+  endpoint:
+    health:
+      show-details: always  # Mostrar detalles completos en /actuator/health
 
 springdoc:
   swagger-ui:
-    path: /swagger-ui.html
+    path: /swagger-ui.html  # Swagger UI custom path
   api-docs:
-    path: /api-docs
+    path: /api-docs  # Custom path for API docs
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full  # Configura el nivel de logs de Feign para mostrar todas las solicitudes
+
+eureka:
+  client:
+    register-with-eureka: true  # Registra este microservicio en Eureka
+    fetch-registry: true  # Obtiene el registro de otros servicios de Eureka
+    service-url:
+      defaultZone: http://msvc-eureka:8761/eureka/  # URL del servidor Eureka
+  instance:
+    prefer-ip-address: true  # Usar la IP preferida
+    instance-id: ${spring.application.name}:${random.value}  # ID único de la instancia
 
 # Propiedad de prueba
 test:
-  message: "El archivo de configuración msvc-usersAccountsManager.yml está siendo utilizado correctamente. Desde Github"
-
-  
-
+  message: "--El archivo de configuración msvc-usersAccountsManager.yml está siendo utilizado correctamente. Desde Github"
