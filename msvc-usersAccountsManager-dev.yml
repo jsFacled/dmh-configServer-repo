@@ -70,7 +70,7 @@ logging:
     com.DigitalMoneyHouse.msvc_usersAccountsManager.repository: INFO  # Puedes ajustar según el detalle que necesites
     org.springframework.web: DEBUG  # Mostrar logs detallados de Spring Web (opcional)
     org.springframework.cloud.openfeign: DEBUG  # Para ver detalles de las solicitudes de Feign (opcional)
-    feign.Logger: DEBUG  # Logs detallados de Feign (cuerpo, cabeceras, etc.)
+   
     org.hibernate.SQL: DEBUG  # Mostrar las consultas SQL generadas (opcional)
     com.netflix.discovery: INFO  # Cambia de DEBUG a INFO para reducir detalles
     com.netflix.eureka: INFO
