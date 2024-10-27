@@ -59,6 +59,13 @@ eureka:
     prefer-ip-address: true  # Usar la IP preferida
     instance-id: ${spring.application.name}:${random.value}  # ID único de la instancia
 
+
+# Configuración de logs
+logging:
+  level:
+    root: DEBUG  # Cambia a DEBUG para obtener más detalles
+    com.DigitalMoneyHouse.msvc_usersAccountsManager: DEBUG  # Logs detallados para tu código
+
 # Propiedad de prueba
 test:
-  message: "--El archivo de configuración msvc-usersAccountsManager.yml está siendo utilizado correctamente. Desde Github"
+  message: "--Profile: dev - El archivo de configuración msvc-usersAccountsManager-dev.yml está siendo utilizado correctamente. Desde Github"
