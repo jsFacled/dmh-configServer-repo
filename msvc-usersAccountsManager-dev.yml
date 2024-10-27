@@ -63,7 +63,7 @@ eureka:
 # Configuración de logs
 logging:
   level:
-    root: INFO  # Nivel global de logging, puedes cambiarlo a DEBUG si lo necesitas
+    root: DEBUG
     com.DigitalMoneyHouse.msvc_usersAccountsManager.controller: DEBUG  # Para el controlador
     com.DigitalMoneyHouse.msvc_usersAccountsManager.service: DEBUG  # Para el servicio
     com.DigitalMoneyHouse.msvc_usersAccountsManager.repository: INFO  # Puedes ajustar según el detalle que necesites
