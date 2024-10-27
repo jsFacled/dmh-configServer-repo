@@ -63,8 +63,14 @@ eureka:
 # Configuración de logs
 logging:
   level:
-    root: DEBUG  # Cambia a DEBUG para obtener más detalles
-    com.DigitalMoneyHouse.msvc_usersAccountsManager: DEBUG  # Logs detallados para tu código
+    root: INFO  # Nivel global de logging, puedes cambiarlo a DEBUG si lo necesitas
+    com.DigitalMoneyHouse.msvc_usersAccountsManager.controller: DEBUG  # Para el controlador
+    com.DigitalMoneyHouse.msvc_usersAccountsManager.service: DEBUG  # Para el servicio
+    com.DigitalMoneyHouse.msvc_usersAccountsManager.repository: INFO  # Puedes ajustar según el detalle que necesites
+    org.springframework.web: DEBUG  # Mostrar logs detallados de Spring Web (opcional)
+    org.springframework.cloud.openfeign: DEBUG  # Para ver detalles de las solicitudes de Feign (opcional)
+    org.hibernate.SQL: DEBUG  # Mostrar las consultas SQL generadas (opcional)
+
 
 # Propiedad de prueba
 test:
